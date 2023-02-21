@@ -6,6 +6,13 @@ const possibleChoices = document.querySelectorAll('button')
 let userChoice
 let computerChoice
 let result
+let vitoria
+let empate
+let derrota
+
+empate = "Empatou!!"
+vitoria = "Você ganhou!!"
+derrota = "Você perdeu"
 
 
 possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener('click', (e) => {
@@ -19,38 +26,50 @@ function generateComputerChoice() {
     const randomNumber = Math.floor(Math.random() * possibleChoices.length + 1)
 
     if (randomNumber === 1){
-        computerChoice = 'rock'
+        computerChoice = 'Pedra'
     }
     if (randomNumber === 2){
-        computerChoice = 'paper'
+        computerChoice = 'Papel'
     }
     if (randomNumber === 3){
-        computerChoice = 'scissors'
+        computerChoice = 'Tesoura'
     }
     computerChoiceDisplay.innerHTML = computerChoice
 }
 
 function getResult(){
     if (computerChoice === userChoice) {
-            result = 'Empatou!!'
+            result = empate
     }
-    if (computerChoice === "rock" && userChoice ==="paper") {
-        result = 'Você ganhou!!'
+    if (computerChoice === "Pedra" && userChoice ==="Papel") {
+        result = vitoria
 }
-    if (computerChoice === "paper" && userChoice ==="rock") {
-    result = 'Você perdeu!!'
+    if (computerChoice === "Papel" && userChoice ==="Pedra") {
+    result = derrota
 }
-    if (computerChoice === "paper" && userChoice ==="scissors") {
-    result = 'Você ganhou'
+    if (computerChoice === "Papel" && userChoice ==="Tesoura") {
+    result = vitoria
 }
-    if (computerChoice === "scissors" && userChoice ==="paper") {
-    result = 'Você perdeu!!'
+    if (computerChoice === "Tesoura" && userChoice ==="Papel") {
+    result = derrota
 }
-    if (computerChoice === "scissors" && userChoice ==="rock") {
-    result = 'Você ganhou'  
+    if (computerChoice === "Tesoura" && userChoice ==="Pedra") {
+    result = vitoria  
 }
-    if (computerChoice === "rock" && userChoice ==="scissors") {
-    result = 'Você perdeu!!'
+    if (computerChoice === "Pedra" && userChoice ==="Tesoura") {
+    result = derrota
 }
-    resultDisplay.innerHTML = result
+    if (result === empate) {
+        resultDisplay.innerHTML = result
+        resultDisplay.setAttribute('class', 'text-primary')
+    }
+    if (result === derrota) {
+        resultDisplay.innerHTML = result
+        resultDisplay.setAttribute('class', 'text-danger')
+    }
+    if (result === vitoria) {
+        resultDisplay.innerHTML = result
+        resultDisplay.setAttribute('class', 'text-success')
+    }
+    
 }
