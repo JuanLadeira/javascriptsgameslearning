@@ -108,11 +108,11 @@ function checkMatch(){
     console.log(cardsWon.length)
     resultDisplay.textContent = cardsWon.length + " pontos"
 
-    if(cardsWon.length==cardArray.length/2){
-        pontuacaoDisplay.textContent = ""
+    if(cardsWon.length === cardArray.length/2){
+        pontuacaoDisplay.remove()
         resultDisplay.innerHTML = 'Parabéns, você encontrou todas as duplicatas.'
     }
-}
+}   
 createBoard()
 
 })
